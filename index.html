@@ -18,12 +18,19 @@
         </div>
         <div class="container-info">
             <div class="count">
-                <p class="info">Total:</p>
-                <p class="info">Realizadas:</p>
+                <p id="total-tareas" class="info"></p>
+                <p id="tareas-realizadas" class="info">Realizadas:</p>
             </div>
 
             <div class="list">
-                <ul class="lista" id="lista-tareas"></ul>
+                <table border="solid"> 
+                    <thead>
+                        <th>ID</th>
+                        <th>Tarea</th>
+                    </thead>
+                    <tbody class="lista" id="lista-tareas"></tbody>
+                </table>
+                <!--<ul class="lista" id="lista-tareas"></ul>-->
             </div>
     </div>
 

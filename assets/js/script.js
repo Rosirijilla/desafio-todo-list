@@ -2,6 +2,8 @@
 const listadoDeTareas = document.getElementById("lista-tareas");
 const inputTarea = document.getElementById("escribir-tareas");
 const btnAgregar = document.getElementById("agregar-tareas");
+const cuentaTotalTareas = document.getElementById("total-tareas")
+const cuentaTareasHechas = document.getElementById("tareas-realizadas")
 
 /*Arreglo guardar tareas*/
 const tareas = [];
@@ -10,10 +12,15 @@ const tareas = [];
 function renderTareas() {
   let html = "";
   for (let tarea of tareas) {
-    html += `<li class="punto-lista">${tarea.id} ${tarea.tarea} <input class="input-seleccionar" type="checkbox"> <button class="btnx-eliminar" onclick="borrar(${tarea.id})">❌</button></li>`;
+    html += `<tr>
+    <td class="punto-lista">${tarea.id}</td>
+    <td class="punto-lista">${tarea.tarea}</td>
+    <td><input class="input-seleccionar" type="checkbox"> <button class="btnx-eliminar" onclick="borrar(${tarea.id})">❌</button></td>
+    </tr>`;
   }
 
   listadoDeTareas.innerHTML = html;
+  cuentaTareasHechas.textContent = `Total de tareas: ${tareas.length}`
 }
 
 /*Función borrar id tareas*/
