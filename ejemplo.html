@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="nuevoInvitado"> <!-- 1 -->
+    <button id="agregarInvitado">Agregar</button> <!-- 2 -->
+    <h3>Invitados: </h3>
+    <ul id="invitados"></ul> <!-- 3 -->
+
+    <script>
+        const listaDeInvitados = document.querySelector("#invitados")
+        const invitadoInput = document.querySelector("#nuevoInvitado")
+        const btnAgregar = document.querySelector("#agregarInvitado")
+        const invitados = []
+        btnAgregar.addEventListener("click", () => {
+            const nuevoInvitado = invitadoInput.value
+            invitados.push({ id: Date.now(), nombre: nuevoInvitado })
+            invitadoInput.value = ""
+            let html = ""
+            for (let invitado of invitados) {
+                html += `<li>${invitado.nombre} <button
+onclick="borrar(${invitado.id})"> eliminar </button> </li>`;
+            }
+            listaDeInvitados.innerHTML = html;
+        });
+        function borrar(id) {
+            const index = invitados.findIndex((ele) => ele.id == id)
+            invitados.splice(index, 1)
+            let html = ""
+            for (invitado of invitados) {
+                html += `<li>${invitado.nombre} <button
+onclick="borrar(${invitado.id})"> eliminar </button> </li>`;
+            }
+            listaDeInvitados.innerHTML = html;
+        }
+    </script>
+
+</body>
+
+</html>
